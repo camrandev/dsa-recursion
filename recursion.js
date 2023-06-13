@@ -9,7 +9,17 @@ function product(nums) {
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words) {}
+function longest(words, longestString = '') {
+  // let longestString = -Infinity; // 'hello'
+
+  // base case
+  if (words.length === 0) return longestString.length;
+
+  if (words[0].length > longestString.length) longestString = words[0];
+
+  // recursive case
+  return longest(words.slice(1), longestString = longestString);
+}
 
 /** everyOther: return a string with every other letter. */
 
