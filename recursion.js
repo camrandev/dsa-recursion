@@ -87,10 +87,10 @@ function gatherStrings(obj) {
   function _gather(obj) {
     for (let key in obj) {
       debugger;
-      if (typeof obj[key] === 'object' && obj[key].constructor === Object) {
+      if (typeof obj[key] === "object" && obj[key].constructor === Object) {
         _gather(obj[key]);
         debugger;
-      } else if (typeof obj[key] === 'string') {
+      } else if (typeof obj[key] === "string") {
         result.push(obj[key]);
         debugger;
       }
@@ -106,7 +106,24 @@ function gatherStrings(obj) {
 /** binarySearch: given a sorted array of numbers, and a value,
  * return true if val is in array, false if not present). */
 
-function binarySearch(arr, val) {}
+function binarySearch(arr, val) {
+  let out = false;
+
+  function _search(arr) {
+    let midpoint = Math.floor(arr.length / 2);
+    debugger;
+    if (arr[midpoint] === val) {
+      out = true;
+      return;
+    }
+
+    if (val > arr[midpoint]) _search(arr.slice(midpoint + 1));
+    if (val < arr[midpoint]) _search(arr.slice(0, midpoint));
+  }
+
+  _search(arr);
+  return out;
+}
 
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
