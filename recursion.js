@@ -41,11 +41,23 @@ function find(arr, val) {
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
-function isPalindrome(str) {}
+function isPalindrome(str) {
+  if (str[0] !== str[str.length - 1]) return false;
+  if (str.length === 0) return true;
+
+  return isPalindrome(str.slice(1, str.length - 1))
+}
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str) {}
+function revString(str) {
+  let copy = str.slice();
+  if (copy.length === 0) return '';
+  const last = copy.slice(-1);
+  debugger;
+
+  return last + revString(copy.slice(0, -1))
+}
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
