@@ -9,7 +9,7 @@ function product(nums) {
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words, longestString = '') {
+function longest(words, longestString = "") {
   // let longestString = -Infinity; // 'hello'
 
   // base case
@@ -18,25 +18,25 @@ function longest(words, longestString = '') {
   if (words[0].length > longestString.length) longestString = words[0];
 
   // recursive case
-  return longest(words.slice(1), longestString = longestString);
+  return longest(words.slice(1), (longestString = longestString));
 }
 
 /** everyOther: return a string with every other letter. */
 
 function everyOther(str) {
-  if (str.length === 0) return ''
+  if (str.length === 0) return "";
 
-  return str[0] + everyOther(str.slice(2))
+  return str[0] + everyOther(str.slice(2));
 }
 
 /** find: return boolean depending on if val exists in array or not. */
 
 function find(arr, val) {
-  if (arr.length === 0) return false
+  if (arr.length === 0) return false;
 
-  if (val === arr[0]) return true
+  if (val === arr[0]) return true;
 
-  return find(arr.slice(1), val)
+  return find(arr.slice(1), val);
 }
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
@@ -45,23 +45,39 @@ function isPalindrome(str) {
   if (str[0] !== str[str.length - 1]) return false;
   if (str.length === 0) return true;
 
-  return isPalindrome(str.slice(1, str.length - 1))
+  return isPalindrome(str.slice(1, str.length - 1));
 }
 
 /** revString: return a copy of a string, but in reverse. */
 
 function revString(str) {
   let copy = str.slice();
-  if (copy.length === 0) return '';
+  if (copy.length === 0) return "";
   const last = copy.slice(-1);
   debugger;
 
-  return last + revString(copy.slice(0, -1))
+  return last + revString(copy.slice(0, -1));
 }
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
 
-function findIndex(arr, val) {}
+function findIndex(arr, val) {
+  let out = -1;
+
+  function _find(arr, i) {
+    if (arr.length === i) return;
+
+    if (arr[i] === val) {
+      out = i;
+      return;
+    }
+
+    _find(arr, i + 1);
+  }
+
+  _find(arr, 0);
+  return out;
+}
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
