@@ -23,11 +23,21 @@ function longest(words, longestString = '') {
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {}
+function everyOther(str) {
+  if (str.length === 0) return ''
+
+  return str[0] + everyOther(str.slice(2))
+}
 
 /** find: return boolean depending on if val exists in array or not. */
 
-function find(arr, val) {}
+function find(arr, val) {
+  if (arr.length === 0) return false
+
+  if (val === arr[0]) return true
+
+  return find(arr.slice(1), val)
+}
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
