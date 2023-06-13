@@ -128,7 +128,38 @@ function binarySearch(arr, val) {
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
-function binarySearchIndex(arr, val) {}
+
+// [1, 2, 3, 4, 5, 6, 7], 6
+function binarySearchIndex(arr, val) {
+  let outNumber = [];
+
+  function _search(arr) {                       // [5, 6, 7]
+    let midpoint = Math.floor(arr.length / 2);  // midpoint = index 1
+    debugger;
+    if (arr.length === 0) {
+      outNumber = -1;
+      return;
+    }
+
+    if (arr[midpoint] === val) {                // arr[1] = 6
+      outNumber.push(...arr.slice(0, midpoint + 1))                           // outNumber.push(...slice(0,))
+      return;
+    } 
+
+    if (val > arr[midpoint]) {                 // val = 6 > 4 
+      outNumber.push(...arr.slice(0, midpoint + 1))   // outNumber = [1,2,3,4]
+      _search(arr.slice(midpoint + 1));        // 
+    };
+
+    if (val < arr[midpoint]) {
+      outNumber.push(...arr.slice(midpoint + 1))
+      _search(arr.slice(0, midpoint));
+    } 
+  }
+
+  _search(arr);
+  return Array.isArray(outNumber) ? outNumber.length - 1 : outNumber
+}
 
 // you might find the above two problems easier if you change the function signature to:
 //
